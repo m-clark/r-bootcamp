@@ -1,0 +1,59 @@
+---
+title: "Introduction to Statistical Programming with R"
+author: "M"
+date: "June 18, 2015"
+output: 
+  html_document:
+    toc: true
+---
+
+# Outline
+
+## Morning
+
+- Getting started
+    - Installing R
+    - Installing Rstudio
+        - Getting to know the power of Rstudio
+    - Installing additional functionality
+
+- Simple programming
+    - Creating and manipulating objects
+    - Classes of objects
+    - Using functions
+    
+- I/O
+    - Getting data in and out
+
+- Manipulating data objects
+    - Filtering
+    - Selecting
+    - Using non-standard data objects
+
+- Coding Recess
+  
+## Afternoon
+
+- Control flow
+    - For, ifelse, etc.
+  
+- Functional programming
+    - Creating functions
+    - Manipulating other functions
+
+- Statistical Exploration
+    - Numerical Description of data
+
+- Exploring Data Visually
+    - Density
+    - Bivariate relationships
+    - Interactivity
+
+- Basic Modeling
+    - GLM
+    - Going further
+
+- Code style, reproducibility
+    - Writing
+
+- Coding Recess

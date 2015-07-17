@@ -1,0 +1,140 @@
+body {font-family: sans-serif; background:black;}  /*#82A3BF #9FB6CD #B9D3EE #4F94CD #5F5647 #6495ED  Rstudio blue is #428bca Dodger blue is #1E90FF*/
+h1 {font-family: sans-serif; color:#3F5151; text-align: center}
+h2 {font-family: sans-serif; color:#1E90FF; text-align: center} /*; background:#82A3BF*/
+h3 {font-family: sans-serif; color:#3F5151; text-align: left}
+h4 {font-family: sans-serif; color:#3F5151; text-align: center}
+h5 {font-family: sans-serif; color:#3F5151; text-align: left}
+p {font-family: sans-serif; color:#0C1707;}
+ul li {
+    line-height: 140%;
+    list-style: outside none disc;
+    margin: 0.1em 0 0.6em 2.0em;
+    padding: 0;
+    color:#5F5647; /*#5F5647 #4A2A1E #550307 #0C1707*/
+}
+
+
+slides > slide.dark {
+    background: none repeat scroll 0 0 black  !important; /*Changes Transition Slide #82A3BF  #5F5647*/
+}
+
+slides > slide {
+    border-radius: 5px;
+    color: #797979;
+    display: none;
+    background-color: white;
+    font-family: "Open Sans",Arial,sans-serif;
+    font-size: 26px;
+    height: 700px;
+    margin-left: -450px;
+    margin-top: -350px;
+    padding: 40px 60px;
+    transition: all 0.6s ease-in-out 0s;
+    width: 900px;
+}
+
+mark.emp {
+  color:#FF5500;
+  background: none;
+}
+
+.empCode {
+  color:#550307;
+  background: none;
+}
+
+.empTitle {
+  color:#1E90FF; /*#428bca*/
+  background: none;
+}
+
+
+titlestrong.emp {
+  color: #fff;  /*#550307 hot pink #FF69B4*/
+  background: none;
+  font-family: "Open Sans"; /*Magneto*/
+  font-style:normal; /*italic*/
+}
+
+
+
+table.rmdtable th {
+    background: -moz-linear-gradient(center top , #5F5647 40%, #5F5647 80%) no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: white;
+    font-size: 18px;
+} /*Changes Table Head Colors*/
+
+
+article.smaller pre {
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 20px;
+}
+
+a {
+    border-bottom: 0 solid rgba(42, 124, 223, 0.5);
+    color:#0070FF ; /*#9B110E*/
+    text-decoration: none;
+}
+
+
+pre { /* console output*/
+    box-sizing: border-box;
+    font-family: "Source Code Pro","Courier New",monospace;
+    font-size: 10px;
+    left: 0px;
+    right: 60px;
+    letter-spacing: -1px;
+    line-height: 28px;
+    margin-bottom: 20px;
+    padding: 10px 0 10px 10px;
+    position: relative;
+    width: 100%;
+}
+
+.prettyprint  {
+  font-size:10pt;
+  background-color:#ffefd5;
+
+} /*Changes Font Color for Words in Code*/
+
+.prettyprint .pln {
+
+} /*Changes Font Color for (all) Words in Code*/
+
+.prettyprint .str, .prettyprint .atv {
+    color: green;
+
+} /*Changes Font Color for Strings in Code*/
+
+.prettyprint .kwd, .prettyprint .tag {
+    color: #EE4000;  /*#9B110E*/
+} /*Changes Font Color for Functions in Code... or not*/
+
+#bg img {
+  position: absolute; 
+  top: 100; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: 0; 
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.title-slide {
+    color: white;  /*#550307; #428bca*/
+    background: black;
+    /*line-height: 1.4;*/
+    
+}
+
+.title-slide hgroup h1 {
+    color: white;  /*#550307; #428bca*/
+    /*font-size: 65px;*/
+    /*letter-spacing: -3px;*/
+    /*line-height: 1.4;*/
+    font-family: Lora ; /*Palatino Linotype 'Press Start 2P'*/
+    font-style:italic;
+}

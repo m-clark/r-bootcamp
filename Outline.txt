@@ -1,0 +1,54 @@
+Introduction to Statistical Programming with R
+
+This bootcamp will introduce applied researchers to concepts necessary to get started programming within a statistical environment.  This will use a very hands on approach with a goal to have those attending to be very comfortable both with R and with statistical programming in general should they decide to use another language.  The course covers two days and each morning and afternoon will be divided into four 45 minute segments with a short break at the halfway point.  Each morning and afternoon will end with time spent applying what has been learned.
+
+Topics include
+
+Day 1
+Morning
+	Module 1: Getting started
+		A:	Thinking computationally, Introduction to R and Rstudio
+		B:	Getting started
+
+	Module 2: 
+		A:	Simple programming, creating and manipulating objects, simple stats and vis
+		B:	Playtime
+
+Lunch
+
+Afternoon
+	Module 1: Data manipulation
+		A: I/O, Filtering, Selecting, Using non-standard data objects
+		B: Iteration
+
+
+	Module 2
+		A:	Writing Functions
+		B:	Playtime
+
+
+
+Day 2
+Morning
+	Module 1
+		A:	Getting started with modeling
+		B:	Visualization Part 1
+
+	Module 2
+		A:	Visualization Part 2
+		B:	Playtime
+
+Lunch		
+		
+Afternoon
+	Module 1
+		A:	Parallelization
+		B:	Getting more out of Rstudio
+		
+	Module 2
+		A:	Code style, reproducibility
+		B:	Playtime
+
+
+
+Thinking Statistically is a short course provided over three afternoons that can serve as an introduction for incoming graduate students or a refresher for anyone.  The focus is on concepts and how to investigate ideas and attack problems in a statistical and computational fashion.  Topics include testing ideas, measurement issues, data integrity, computational thinking, pattern recognition and model building, and reproducibility among others.

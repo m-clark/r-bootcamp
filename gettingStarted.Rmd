@@ -1,0 +1,115 @@
+---
+title: "Getting Started"
+output: 
+  ioslides_presentation:
+    highlight: zenburn
+    theme: cosmo
+---
+# Getting started
+
+
+## Getting started
+- Installing R
+- Installing Rstudio
+    - Getting to know the power of Rstudio
+- Installing additional functionality
+
+
+## What is R?
+
+R is a programming language (Gnu-S)
+
+R is an environment for statistical computing and graphics
+
+R is not a "stats package"
+
+It is never useful to ask if you can do something in R.  
+
+- R's only limitation is your programming ability and creativity.
+
+
+## Installing R
+
+Installing R
+
+- Pick a mirror (closer better but doesn't really matter.  0-Cloud is fine.)
+- Pick an OS
+  - Windows: Download base
+  - MAC: first .pkg file
+  - Linux: follow instructions according to your flavor
+
+You now have a fully functioning statistical programming environment.
+
+However... you will likely never need to use base R directly
+
+
+## Installing Rstudio
+
+Installing Rstudio
+
+Cross-platform
+
+ - Go to website
+ - Download
+ - Install
+ 
+# Using Rstudio
+## What is Rstudio?
+<mark class="emp">I</mark>ntegrated <mark class="emp">D</mark>evelopment <mark class="emp">E</mark>nvironment
+
+
+## Using Rstudio
+
+Making programming easier
+
+- Code completion
+- Keyboard shortcuts
+- Debugging
+
+But lots more...
+
+
+## Using Rstudio
+
+- <mark class='emp'>**Web-enabled**</mark>
+    - Interactive graphics
+    - Create webpages, presentations (like this one) and more
+- <mark class='emp'>**Projects**</mark>
+- <mark class='emp'>**Built in version-control**</mark>
+- Package development
+
+
+## Multiple File Types
+
+- R scripts
+- R markdown
+- Latex 
+- Presentation
+- General text/code editor that recognizes several other languages
+
+## Web-enabled
+
+Not only can you easily publish your efforts to html, you can even code directly in html, css, javascript etc.
+
+The Rstudio group and others have a suite of packages devoted to interactive visualizations that often will require no more effort than standard plots
+
+
+## Projects
+
+Projects are a way to keep you research focused
+
+Easily pick up where you left off
+
+Easily switch from one project to another
+
+Version control
+
+
+## Version Control
+
+Any project is able to take advantage of version control
+
+- Git
+- SVN
+
+Among the many benefits, version-control provides peace of mind for research reproducibility, enhances collaboration, and allows one to keep on top of all the changes a typical research endeavor undergoes.
