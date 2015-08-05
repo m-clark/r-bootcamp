@@ -3,12 +3,10 @@ title: "Getting Started"
 output: 
   ioslides_presentation:
     highlight: zenburn
-    theme: cosmo
+    theme: united
+    
 ---
-# Getting started
-
-
-## Getting started
+## Outline
 - Installing R
 - Installing Rstudio
     - Getting to know the power of Rstudio
@@ -113,3 +111,39 @@ Any project is able to take advantage of version control
 - SVN
 
 Among the many benefits, version-control provides peace of mind for research reproducibility, enhances collaboration, and allows one to keep on top of all the changes a typical research endeavor undergoes.
+
+
+# Adding Functionality
+
+## Adding Functionality
+
+R's true power comes from the thousands of packages produced by the statistical and greater research communities
+
+At this point there is a package for practically everything you'd want to do, especially when it comes to modeling
+
+The best part is that adding this functionality is very easy
+
+## Installing Packages
+
+CRAN
+
+  - Comprehensive R Archive Network
+  - Main place for R packages
+  
+Other
+
+  - Github (also Rforge R-forge)
+  - Bioconductor
+
+To install packages there are two primary approaches with Rstudio 
+
+  - install.packages function
+  - Using the packages tab
+  
+## Using Packages
+
+R does not load packages in your library automatically. To do so, use the library function to select the package.
+
+  - library('packagename')
+
+Common coding practice loads a package only at the point it's needed (rather than loading all at the beginning)

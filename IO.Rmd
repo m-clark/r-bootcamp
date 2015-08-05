@@ -1,0 +1,127 @@
+---
+title: "I/O"
+author: "MC"
+date: "August 5, 2015"
+output: ioslides_presentation
+---
+
+## Outline:
+
+- Geting data in from outside sources
+  - text
+  - statistical packages
+  - web
+  - unstructured
+
+- Saving R objects
+  - Writing to common data formats
+  - Saving and using RData files.
+
+
+## Text/flat files
+read.* family of functions
+
+- read.table (most general), read.csv, others
+
+```{r, eval=FALSE}
+myData = read.csv('my/file/location/myFile.csv')
+```
+
+
+
+
+## readr as an alternative
+The readr package has similar functionality and same naming convention using underscore instead of dot.
+
+- read_csv
+
+Some efficiencies are built in, as well as making it easier to see if there are any issues, even if minor
+
+
+In addition, the readxl package also provides the ability to read in MS Excel files (or particular sheets), without any thing additional needed.
+
+- Doesn't fix the fact that Excel is a terrible format to keep your data in.
+- You'd often still be better off writing to csv from Excel first
+
+
+
+## Statistical Packages
+
+In general, there appears to still be some misconception that entirely separate programs are needed to transfer data from one statistical enviornment to another.
+
+However, this hasn't been the case for a very long time.
+
+- Different packages have long been able to read each others' files directly
+- One can *always* write to a text file (e.g. csv)
+
+Base R comes with a package called foreign for reading in data files from various packages such as SPSS, Stata etc.
+
+However, the haven package will read current Stata files and offers some capacity to write to spss or stata files.
+
+Other packages may have the ability to read and write very spec
+
+
+
+## Web
+
+A variety of data formats are web-oriented, such as json, xml, html tables and the like.
+
+In addition, one can pull a lot of data directly via APIs (e.g. use google maps or similar to geocode your datas).
+
+There are a variety of packages to help with this.  A starting point would be the [Web Technologies Task View](https://cran.r-project.org/web/views/WebTechnologies.html).
+
+Furthermore, a variety of packages are available to analyze or otherwise deal with the data in a streaming fashion.
+
+
+
+## Unstructured Data
+*Unstructured* data doesn't really have a precise definition, and usually means anything that isn't in tabular format, with the most common example being text.
+
+- Perhaps better would be to say it's uncommonly structured (relative to tabular data)
+
+While there is a vast amount of ways to attack text specifically, other data might require alternative solutions.
+
+The goal is almost always to impose a common structure in order for the data to be analyzed.
+
+Again, R has many packages that might be of 
+
+
+## Big Data
+
+Big data is that which can't be housed or analyzed in a normal computing environment (e.g. even desktop with lots of horsepower could not crunch it).
+
+R is memory intensive, and even data that can be imported might not be feasible with some types of analysis.
+
+- Largish data that turns into four chains of thousands of simulated values for hundreds of parameters
+
+However there are cluster computing (e.g. CRC) and distributed data solutions that make R viable in these situations as well.
+
+AWS, Spark and other means to deal with large data sets will eventually be easy enough for average folk to enage such data through the web.
+
+
+
+## Output: writing to common formats
+Writing to some data format is typically as easy as reading it in.
+
+- e.g. write.csv(rObject, 'fileLocation/fileName.csv')
+
+Just as with reading the data, what package you might use for the format in question will vary, but one or two packages will cover the majority of common data scenarios.
+
+Writing to text files pretty much ensures all other analytical programs will be able to read it.
+
+
+
+## Saving and Using .RData files
+
+One unique data format to get used to working with is the RData file.
+
+When you use the functions **save** (for specific objects) or **save.image** (for all objects, i.e. your *workspace*), you have the capacity to save everything you've created to a file
+
+When you return to using R, the **load** function on the file will restore all the objects you've created.
+
+Try it now.
+
+- Use save.image('fileLocation/fileName.RData')
+- Close out Rstudio
+- Open it back up
+- Use load('fileLocation/fileName.RData'), and print one of your objects to the console

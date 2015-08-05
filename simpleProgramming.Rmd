@@ -1,0 +1,94 @@
+---
+title: "Simple programming"
+author: "MC"
+output:   
+    ioslides_presentation:
+      highlight: zenburn
+      theme: cosmo
+---
+
+## Outline
+  - Creating and manipulating objects
+    
+    - Classes of objects
+  - Data Structures
+  - Using functions
+  
+  
+  
+## Creating and manipulating objects
+
+In R, you will constantly create *objects* and manipulate objects with *functions*.
+
+Objects can be anything, and this will become clear as we continue through the course.
+
+We will use many functions over the course of the day, including building our own.
+
+
+
+## Data Structures
+
+The most common data structures used can be seen to posses
+
+One type only
+
+  - Vector (may be of length 1)
+    - numeric, integer, character and logical are the most commonly used
+    - In addition, a special class of the integer type are factors
+    
+  - Matrix
+    - collection of vectors
+    
+  - Array
+    - beyond 2 dimensions
+
+## Data Structures
+Multiple types
+
+  - Lists
+    - Dataframes
+      - Perhaps most commonly used class of lists
+      
+Dataframes are what you've been using if you have experience with other statistical packages or programming languages.
+
+Typical use is that each column represents attributes, targets etc., while rows represent observations (e.g. people, time points)
+
+
+
+## Using functions
+R is a functional language.
+
+Functions are objects that take some input and return a **value**
+
+They are highly flexible, in that the nature of the input can range from nothing to a couple dozen ***arguments***, values can be lists of modeling output, a plot, or even another function.
+
+
+## Using functions
+
+
+```{r funcDemo, eval=F}
+myfunction(x=someX, y=someY)
+```
+
+
+## Using functions
+
+Use the matrix function to create a matrix, use c to concatentate values, use : to create sequences, and finally provide arguments pertaining to the number of rows and columns.
+
+```{r createMatrix}
+myMatrix = matrix(c(1:3, 4:6, 7:9), nrow=3, ncol=3, byrow=T)
+```
+
+Try creating a dataframe version of the myMatrix object, called myDF.  To convert a matrix object to a dataframe, use the **as.data.frame** function on it.
+
+
+## Using functions
+
+While most functions are unique, many are generic and have ***methods*** that will allow the function to operate differently for different classes of objects. The following demonstrates this with the commonly used **summary** function.
+
+```{r methods}
+methods(summary)
+```
+
+
+
