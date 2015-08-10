@@ -1,8 +1,10 @@
 ---
 title: "I/O"
 author: "MC"
-date: "August 5, 2015"
-output: ioslides_presentation
+output:   
+    ioslides_presentation:
+      highlight: zenburn
+      theme: cosmo
 ---
 
 ## Outline:
@@ -26,8 +28,6 @@ read.* family of functions
 ```{r, eval=FALSE}
 myData = read.csv('my/file/location/myFile.csv')
 ```
-
-
 
 
 ## readr as an alternative
@@ -72,6 +72,23 @@ There are a variety of packages to help with this.  A starting point would be th
 
 Furthermore, a variety of packages are available to analyze or otherwise deal with the data in a streaming fashion.
 
+## Web
+
+Install the dplyr (for many things as we'll see), leaflet (for vis), and ggmap (for a simple geocode function that uses Google API) packages
+
+Create an R object that is a character string of your address (or use the following for ND: 'Notre Dame, Indiana')
+
+
+```{r googleMapAPI}
+place = ggmap::geocode('Notre Dame, Indiana')
+
+library(dplyr); library(leaflet)
+
+leaflet() %>% 
+  addTiles() %>% 
+  addCircles(lng=place$lon, lat=place$lat, radius=50, opacity=1, color='firebrick', fillColor = 'darkred', fillOpacity = 1)
+```
+
 
 
 ## Unstructured Data
@@ -83,7 +100,7 @@ While there is a vast amount of ways to attack text specifically, other data mig
 
 The goal is almost always to impose a common structure in order for the data to be analyzed.
 
-Again, R has many packages that might be of 
+Again, R has many packages that might be of use, but it will depend on your situation
 
 
 ## Big Data
@@ -119,7 +136,17 @@ When you use the functions **save** (for specific objects) or **save.image** (fo
 
 When you return to using R, the **load** function on the file will restore all the objects you've created.
 
-Try it now.
+
+## Playtime
+
+Install the readr package
+
+Use the read_tsv (tab separated) file to read in the following data:
+
+http://csr.nd.edu/assets/22641/testwebdata.txt
+
+
+Save your workspace
 
 - Use save.image('fileLocation/fileName.RData')
 - Close out Rstudio

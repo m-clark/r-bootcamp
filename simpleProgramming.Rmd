@@ -90,5 +90,24 @@ While most functions are unique, many are generic and have ***methods*** that wi
 methods(summary)
 ```
 
+## Getting Started with Statistical Functions
+
+Write and run the following lines, then use some of the following functions on those objects:
+
+- summary
+- mean
+- sd
+- table
+- plot
+- cbind
+
+```{r}
+x = rnorm(100)
+y = 2*x + rnorm(100)
+z = sample(letters[1:5], 100, replace=T)
+```
+
+
+## Playtime
 
 

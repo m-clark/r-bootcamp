@@ -1,4 +1,4 @@
-body {font-family: sans-serif; background:black;}  /*#82A3BF #9FB6CD #B9D3EE #4F94CD #5F5647 #6495ED  Rstudio blue is #428bca Dodger blue is #1E90FF*/
+body {font-family: sans-serif; background:white;}  /*#82A3BF #9FB6CD #B9D3EE #4F94CD #5F5647 #6495ED  Rstudio blue is #428bca Dodger blue is #1E90FF*/
 h1 {font-family: sans-serif; color:#3F5151; text-align: center}
 h2 {font-family: sans-serif; color:#1E90FF; text-align: center} /*; background:#82A3BF*/
 h3 {font-family: sans-serif; color:#3F5151; text-align: left}
@@ -15,7 +15,7 @@ ul li {
 
 
 slides > slide.dark {
-    background: none repeat scroll 0 0 black  !important; /*Changes Transition Slide #82A3BF  #5F5647*/
+    background: none repeat scroll 0 0 white  !important; /*Changes Transition Slide #82A3BF  #5F5647*/
 }
 
 slides > slide {
@@ -125,7 +125,7 @@ pre { /* console output*/
 
 .title-slide {
     color: white;  /*#550307; #428bca*/
-    background: black;
+    background: white;
     /*line-height: 1.4;*/
     
 }

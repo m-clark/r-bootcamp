@@ -1,6 +1,6 @@
 ---
-title: "Untitled"
-author: "MC"
+title: "R Bootcamp"
+author: "Michael Clar"k
 date: "August 5, 2015"
 output: ioslides_presentation
 ---
@@ -12,4 +12,7 @@ output: ioslides_presentation
 ```
 
 ```{r, child='IO.Rmd'}
+```
+
+```{r, child='dataManipulation.Rmd'}
 ```

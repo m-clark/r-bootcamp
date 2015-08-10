@@ -1,0 +1,86 @@
+---
+title: "dataManipulationPlaytime"
+author: "MC"
+date: "August 10, 2015"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: united
+---
+
+For this you will need to install the package pscl.  While actually a good modeling packge, we only need the bioChemists dataset.
+
+You don't have to actually load the package to get access to it. In R there is the data function to load datasets from various packages (just one of a few reasons to never name an object 'data'). 
+
+```{r, eval=1}
+data(bioChemists, package = 'pscl')
+?pscl::bioChemists  
+```
+
+
+Here are all the steps you will need to take for this exercise:
+
+- Install the pscl package. Load it as demonstrated above.
+
+- Use the help system to find out more about it.
+
+- Given what you know guess the class of it (matrix or data.frame), then check if you are correct.
+
+- Use the your choice (or combination) of the following functions to determine the minimum and maxim number of articles published by the mentors:
+summary, min, max, sort, head, tail
+
+- Now try to it with piping (if you didn't already, if you did try an alternate approach)
+
+- Using the ggvis approach demoed before, create a scatter plot of the presige of the department vs. the number of articles (you do not need to add the smooth line but feel free to).  Install ggvis if you haven't already.  For a list of colors to choose from, type colors() at the console. (Note that some colors with a number in them will not be recognized by ggvis)  Keep in mind the following for ggvis.
+=~ for variables
+:= for constants
+
+- Change the x to be the number of articles of the student, then change the fill to be based on a variable, one of fem, mar, or kid5.
+
+- Once the plot is created, click on the export button and save it out as a separate file.
+
+- Use the cor function to obtain the correlation of those two variables.  Look at the help file for cor, and note that you can do this in different ways.  For example, you could create a subset of just those two variables and feed that to the function, or feed the variables as the x and y arguments.
+
+
+
+The following demo shows how easy it can be to add interactivity to a visualization, and gives a preview to the next section where we will write our own functions.  This doc cannot show the interactivity, but you will see it in your viewer.
+
+```{r, eval=TRUE}
+library(ggvis)
+x = rnorm(500, sd=3)
+y = sin(x) + rnorm(500, sd=.25)
+df = data.frame(x, y)
+
+# a simple function to paste two values together given some input, separated by
+# a comma. Note that it is rare to have a one-line function like this, but
+# writing your own function to do what you need is not necessarily complicated
+mypaste = function(x) paste(round(x[1], 2), ',', round(x[,2], 2))  
+
+df %>% 
+  ggvis(~x, ~y) %>% 
+  layer_points() %>% 
+  add_tooltip(mypaste)
+
+# now hover over your data points in the graph
+
+sp = waggle(.1, 4, value=.1)
+
+df %>% 
+  ggvis(~x, ~y) %>% 
+  layer_points() %>% 
+  layer_smooths(span=sp)
+```
+
+
+```{r, eval=FALSE, echo=FALSE}
+
+bioChemists %>% 
+  ggvis(~art, ~phd) %>% 
+  layer_points(fill=~phd)
+
+bioChemists %>% 
+  ggvis(x=~art, fill=~fem) %>% 
+  group_by(fem) %>% 
+  layer_bars(stack=F)
+```
+

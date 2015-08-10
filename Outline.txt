@@ -12,19 +12,21 @@ Morning
 
 	Module 2: 
 		A:	Simple programming, creating and manipulating objects, simple stats and vis
-		B:	Playtime
+	
+	Playtime
 
 Lunch
 
 Afternoon
 	Module 1: Data manipulation
-		A: I/O, Filtering, Selecting, Using non-standard data objects
-		B: Iteration
-
+		A: I/O, 
+		B: Filtering, Selecting, Using non-standard data objects
 
 	Module 2
 		A:	Writing Functions
-		B:	Playtime
+		B: Iteration
+	
+	Playtime
 
 
 
