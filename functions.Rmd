@@ -1,7 +1,6 @@
 ---
-title: "Functions and Iterative Programming"
+title: "Functions"
 author: "MC"
-date: "August 14, 2015"
 output:   
     ioslides_presentation:
       highlight: zenburn
@@ -16,14 +15,6 @@ Functions
 
 - Review of using
 - Writing your own
-
-Control Flow & Iterative Programming
-
-- Standard looping
-- Vectorized approaches
-- Parallelizing
-
-
 
 # Using functions
 ## Using functions
@@ -98,7 +89,7 @@ f()
 
 ## Environment
 
-In the first case, the reason 2 is returned instead of 3 is because the first environment searched to locate b is the the one created by the function.
+In the first case, the reason 2 is returned instead of 3 is because the first environment searched to locate b is the the one created by the function. As it is passed as an argument, the value associated with the argument is returned.
 
 In the second case, b is not found in the current (function) environment, so the global environment is searched.
 
@@ -123,87 +114,83 @@ Furthermore, functions aid reproducibility.
 
 A simple rule is, if you've written the same line of code more than twice, you should probably write a function the does the operation you're attempting.
 
+
 ## Writing your own functions
-And it doesn't have to be complicated.  Functions (typically) take <mark class='emp'>arguments</mark> and return <mark class='emp'>values</mark>.
+And it doesn't have to be complicated.  
 
-## Anonymous functions
+As noted, Functions take <mark class='emp'>arguments</mark> and return <mark class='emp'>values</mark>.
 
-```{r}
+To create a function, we use the following approach:
+
+```{r, eval=FALSE}
+funcName = function(argsGoHere){
+  Body
+  .
+  .
+  .
+  
+  Value to be returned
+}
+```
+
+
+## Writing your own functions
+
+The following returns 'Positive' if the input is greater than zero, 'Negative' if not.
+
+```{r posNegFunc, cache=TRUE}
 posNeg = function(x){
   result = ifelse(sum(x) > 0, 'Positive', 'Negative')
-  return(result)
+  result
 }
 
 randomData = rnorm(10)
 posNeg(x=randomData)
 ```
 
-And Rstudio's debugger makes also makes testing very easy.
+This does the job but could be made much better.  Can you think of any ideas for improvement?
 
 
-
-
-# Iterative Programming
-## Iterative Programming
-Data manipulation involves a lot of repeated operations, and R shines in this area in that it makes a lot of this easier.
-
-The typical approach seen in other languages can be used, and sometimes is still the way to go.
-
-Column means:
-```{r loop, cache=T}
-# million column matrix
-d = matrix(rnorm(10000000), nrow=10)    # might take a second or two
-dmeans = vector('numeric', ncol(d))     # not necessary but does speed up explicit loops
-
-# The following may take up to ~ 10 seconds
-for (i in 1:ncol(d)){
-  dmeans[i] = mean(d[,i])
-}
-```
-
-## Iterative Programming
-However, other approaches are available, and some vectorized operations can reduce code and are often faster. The quicker you learn the <mark class='empCode'>apply</mark> family of functions, as well as related versions in the aforementioned plyr package, the quicker your data processing will be.
-
-Apply the <mark class='empCode'>mean</mark> function to the columns.  Similar time as a loop in this case but cleaner code. They also have parallelized versions meaning that their speed can be increased quite a bit.
-
-```{r apply, cache=T}
-dmeans = apply(d, 2, mean) # the 2 specifies columns
-```
-
-Faster.
-```{r colMeans, cache=T}
-dmeans = colMeans(d)
-```
-
-## Iterative Programming
-The vectorized approach works in a lot of other places also.
-
-```{r vectorize, cache=T, results='hold'}
-myvar = 1:100
-myvar[sample(myvar, 50)] = NA  # insert 50 missing values
-sum(is.na(myvar))
-myvar[is.na(myvar)] = 0  # change missing to 0
-any(is.na(myvar))
-
-1:10 >= 5  # which of the sequence 1:10 is greater or equal to 5
-
-rowSums(d > 0)  # count values greater than zero for each row
-```
-
-# Your turn
-## Your turn
-
-Using either matrix below (or both), perform a row or column operation with two different approaches.
-
+## Writing your own functions
 Suggestions: 
+  
+  - error handling
+  - support for zero values
+  - perhaps add an argument for converting to factor or binary
+  
 
-  - Calculations like <mark class='empCode'>rowMeans</mark>, <mark class='empCode'>colSums</mark>
-  - Operators <mark class='empCode'>== != > < </mark>
-  - <mark class='empCode'>any</mark> <mark class='empCode'>which</mark> <mark class='empCode'>all</mark>
+## Functionals
+
+Remember that functions are objects.
+
+ - As such, they can be passed as arguments to other functions, while still returning a vector of some kind
+
+We will demonstrate some very important <mark class='emp'>*functionals*</mark> later.
+
+At that point we will also see some <mark class='emp'>*anonymous functions*</mark>, in which we create a simple function on the fly.
+
+There are also functions that return functions.
 
 
-```{r}
-nums = matrix(sample(1:3, 9, replace = T), 3, 3)
-lets = matrix(letters[1:9], 3, 3)
+## Create a function
+
+Write a function that does the following:
+
+Take an input and return a <mark class='empCode'>list</mark> object containing the <mark class='empCode'>mean</mark>, <mark class='empCode'>sd</mark>, and <mark class='empCode'>sum</mark>.
+
+For the purposes of this exercise, in the body of the function create separate objects for each thing to return, and combine them into a list.
+
+Use a snippet to get started (type fun and hit tab).
+
+
+## Debugging
+Rstudio's debugger makes also makes testing very easy.
+
+As an example, one can use a function like debugonce to start the debugging process.
+
+```{r, eval=FALSE}
+debugonce(myfunc)
+myfunc(arg)
 ```
 
+Try it with the function you just created.

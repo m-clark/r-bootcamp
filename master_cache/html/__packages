@@ -1,0 +1,7 @@
+base
+dplyr
+leaflet
+knitr
+rvest
+stringr
+ggvis

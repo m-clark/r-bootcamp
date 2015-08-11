@@ -209,7 +209,7 @@ f()</pre>
 
 </article></slide><slide class=''><hgroup><h2>Environment</h2></hgroup><article  id="environment-1" class="smaller ">
 
-<p>In the first case, the reason 2 is returned instead of 3 is because the first environment searched to locate b is the the one created by the function.</p>
+<p>In the first case, the reason 2 is returned instead of 3 is because the first environment searched to locate b is the the one created by the function. As it is passed as an argument, the value associated with the argument is returned.</p>
 
 <p>In the second case, b is not found in the current (function) environment, so the global environment is searched.</p>
 
@@ -238,13 +238,28 @@ f(); environment()</pre>
 
 </article></slide><slide class=''><hgroup><h2>Writing your own functions</h2></hgroup><article  id="writing-your-own-functions-2" class="smaller ">
 
-<p>And it doesn&#39;t have to be complicated. Functions (typically) take <mark class='emp'>arguments</mark> and return <mark class='emp'>values</mark>.</p>
+<p>And it doesn&#39;t have to be complicated.</p>
 
-</article></slide><slide class=''><hgroup><h2>Anonymous functions</h2></hgroup><article  id="anonymous-functions" class="smaller ">
+<p>As noted, Functions take <mark class='emp'>arguments</mark> and return <mark class='emp'>values</mark>.</p>
+
+<p>To create a function, we use the following approach:</p>
+
+<pre class = 'prettyprint lang-r'>funcName = function(argsGoHere){
+  Body
+  .
+  .
+  .
+  
+  Value to be returned
+}</pre>
+
+</article></slide><slide class=''><hgroup><h2>Writing your own functions</h2></hgroup><article  id="writing-your-own-functions-3" class="smaller ">
+
+<p>The following returns &#39;Positive&#39; if the input is greater than zero, &#39;Negative&#39; if not.</p>
 
 <pre class = 'prettyprint lang-r'>posNeg = function(x){
   result = ifelse(sum(x) &gt; 0, &#39;Positive&#39;, &#39;Negative&#39;)
-  return(result)
+  result
 }
 
 randomData = rnorm(10)
@@ -252,7 +267,50 @@ posNeg(x=randomData)</pre>
 
 <pre >## [1] &quot;Negative&quot;</pre>
 
-<p>And Rstudio&#39;s debugger makes also makes testing very easy.</p>
+<p>This does the job but could be made much better. Can you think of any ideas for improvement?</p>
+
+</article></slide><slide class=''><hgroup><h2>Writing your own functions</h2></hgroup><article  id="writing-your-own-functions-4" class="smaller ">
+
+<p>Suggestions:</p>
+
+<ul>
+<li>error handling</li>
+<li>support for zero values</li>
+<li>perhaps add an argument for converting to factor or binary</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Functionals</h2></hgroup><article  id="functionals" class="smaller ">
+
+<p>Remember that functions are objects.</p>
+
+<p>As such, they can be passed as arguments to other functions.</p>
+
+<p>We will demonstrate some very important <mark class='emp'><em>functionals</em></mark> later.</p>
+
+<p>At that point we will also see some <mark class='emp'><em>anonymous functions</em></mark>, in which we create a simple function on the fly.</p>
+
+<p>There are also functions that return functions.</p>
+
+</article></slide><slide class=''><hgroup><h2>Create a function</h2></hgroup><article  id="create-a-function" class="smaller ">
+
+<p>Write a function that does the following:</p>
+
+<p>Take an input and return a <mark class='empCode'>list</mark> object containing the <mark class='empCode'>mean</mark>, <mark class='empCode'>sd</mark>, and <mark class='empCode'>sum</mark>.</p>
+
+<p>For the purposes of this exercise, in the body of the function create separate objects for each thing to return, and combine them into a list.</p>
+
+<p>Use a snippet to get started (type fun and hit tab).</p>
+
+</article></slide><slide class=''><hgroup><h2>Debugging</h2></hgroup><article  id="debugging" class="smaller ">
+
+<p>Rstudio&#39;s debugger makes also makes testing very easy.</p>
+
+<p>As an example, one can use a function like debugonce to start the debugging process.</p>
+
+<pre class = 'prettyprint lang-r'>debugonce(myfunc)
+myfunc(arg)</pre>
+
+<p>Try it with the function you just created.</p>
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Iterative Programming</h2></hgroup><article  id="iterative-programming" class="smaller ">
 
@@ -260,9 +318,11 @@ posNeg(x=randomData)</pre>
 
 <p>Data manipulation involves a lot of repeated operations, and R shines in this area in that it makes a lot of this easier.</p>
 
+<p>You&#39;ll often see iterative programming within a function, though it can be and often is used in the normal course of programming.</p>
+
 <p>The typical approach seen in other languages can be used, and sometimes is still the way to go.</p>
 
-<p>Column means:</p>
+<p>Calculate column means:</p>
 
 <pre class = 'prettyprint lang-r'># million column matrix
 d = matrix(rnorm(10000000), nrow=10)    # might take a second or two
@@ -275,7 +335,9 @@ for (i in 1:ncol(d)){
 
 </article></slide><slide class=''><hgroup><h2>Iterative Programming</h2></hgroup><article  id="iterative-programming-2" class="smaller ">
 
-<p>However, other approaches are available, and some vectorized operations can reduce code and are often faster. The quicker you learn the <mark class='empCode'>apply</mark> family of functions, as well as related versions in the aforementioned plyr package, the quicker your data processing will be.</p>
+<p>While that works, other approaches are available, and some <em>vectorized</em> operations can reduce code and are often faster.</p>
+
+<p>The quicker you learn the <mark class='empCode'>apply</mark> family of functions, as well as related versions in the aforementioned plyr package, the quicker your data processing will be.</p>
 
 <p>Apply the <mark class='empCode'>mean</mark> function to the columns. Similar time as a loop in this case but cleaner code. They also have parallelized versions meaning that their speed can be increased quite a bit.</p>
 

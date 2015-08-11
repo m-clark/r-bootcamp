@@ -1,0 +1,73 @@
+---
+title: "Modeling Basics"
+author: "MC"
+output:   
+    ioslides_presentation:
+      highlight: zenburn
+      smaller: yes
+      theme: readable
+      widescreen: no
+      css: mainPresentation.css
+
+---
+
+## Modeling
+
+After all that we've gone through at this point, modeling will be the easy part for you.  
+
+The biggest hurdle in modeling is preparing the data, and the better you are at programming:
+
+- the faster it will go
+- the more you can explore
+- the more you can spend time learning other things (like new modeling packages)
+
+Once complete, you now have thousands of packages to choose from for modeling.
+
+
+## Modeling
+
+The standard format for regression modeling can serve as baseline code for modeling in other packages.
+
+Most take a formula and data argument. 
+- a regression of y on x and z
+
+```{r lmExample, eval=FALSE}
+lm(y ~ x + z, data=myData)
+```
+
+Some might take matrix/vector arguments.
+
+```{r lmfitExample, eval=FALSE}
+lm.fit(X, y)          # lm.fit is the workhorse of lm
+```
+
+
+Unsupervised methods usually will need a matrix argument 
+
+- sometimes a dataframe is ok
+
+```{r pca, eval=FALSE}
+princomp(X)
+```
+
+
+## Modeling
+
+And then there are variations on these themes, but those constitute the vast majority of standard and complex models.  
+
+In addition, they all come with additional arguments that you'll need to familiarize yourself with before using the function
+
+```{r lmAlt, eval=FALSE}
+glm(art ~ ., data=bioChemists, family = 'poisson')   # number of articles predicted by everything else
+
+library(pscl)
+hurdle(art ~ ., data=bioChemists, dist = 'poisson')  # hurdle model to deal with excess zeros
+```
+
+```{r lmerExample, eval=FALSE}
+library(lme4)
+lmer(Reaction ~ Days + (1|Subject), data=sleepstudy)  # a mixed model with a random intercept for Subject
+```
+
+
+

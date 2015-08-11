@@ -33,6 +33,10 @@ slides > slide {
     width: 900px;
 }
 
+slides > slide:not(.nobackground):after {                 /*Removes page numbers*/
+  content: ""
+}
+
 mark.emp {
   color:#FF5500;
   background: none;
