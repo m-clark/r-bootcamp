@@ -156,7 +156,7 @@ state.x77 %>%
 
 ## Selecting
 
-Selecting refers to the selection of columns and with dplyr again you get enhanced functionality and clarity
+Selecting here refers to the subset of columns, and with dplyr again you get enhanced functionality and clarity
 
 ```{r select, cache=TRUE}
 iris %>% 
@@ -167,15 +167,38 @@ iris %>%
 ## Aggregation
 Oftentimes we engage in such operations in order to obtain summary information about groups.
 
-```{r}
+```{r aggregate, cache=TRUE}
 iris %>% 
   group_by(Species) %>% 
   summarise_each('mean')
+
 state.x77 %>% 
   data.frame %>% 
   mutate(region = state.region) %>% 
   group_by(region) %>% 
   tally
+```
+
+## Basic Stats
+Piping can be fed to various types of functions to make exploratory analysis easier.
+
+```{r heatmap, cache=TRUE}
+iris %>% 
+  group_by(Species) %>% 
+  summarise_each('mean') %>% 
+  select(-Species) %>% 
+  as.matrix %>% 
+  heatmap
+```
+
+## Basic Stats
+Piping can be fed to various types of functions to make exploratory analysis easier.
+
+```{r correlation, cache=TRUE}
+iris %>% 
+  select(-Species) %>% 
+  cor %>% 
+  round(2)
 ```
 
 

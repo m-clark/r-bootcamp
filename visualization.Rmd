@@ -1,0 +1,83 @@
+---
+title: "Visualization"
+author: "MC"
+output:   
+    ioslides_presentation:
+      highlight: zenburn
+      smaller: yes
+      theme: readable
+      widescreen: no
+      css: mainPresentation.css
+---
+
+## Outline
+- Traditional Static Plotting
+  - Base R plotting
+  - ggplot2
+  
+- Newer approaches
+  - shiny, ggvis, htmlwidgets
+
+# Traditional Static Plotting
+## Traditional Static Plotting
+
+Never forget that Base R has a lot of visualization capabilities that can produce high quality graphs
+
+For many quick peeks, it's still often to be preferred.
+
+<div class='columns-2'>
+```{r histogram, fig.align='left', fig.width=3, fig.height=3, results='hold'}
+x = rnorm(100)
+y = 2*x^2 + rnorm(100)
+hist(x)
+```
+
+<br>
+
+```{r basicPlot, fig.align='right', fig.width=3, fig.height=3}
+plot(x, y)
+```
+</div>
+
+
+## Traditional Static Plotting
+Unfortunately base R plots can take a lot to get to that professional quality, as the defaults are generally poor (my opinion)
+
+Many packages or other base R functions serve a particular purpose
+
+  - heatmaps, dendrograms, diagnostics correlation plots etc.
+
+In addition, a widely used static plotting package is ggplot2
+
+## ggplot2
+
+ggplot2 is based on the 'Grammar of Graphics' and takes on a layered approach to building visualizations, using a technique similar to the piping we showed earlier.
+
+It primarily works on dataframes.
+
+```{r ggplot2}
+library(ggplot2)
+
+ggplot(aes(x=Petal.Length, y=Sepal.Length), data=iris) +
+  geom_point()
+```
+
+## ggplot2
+
+ggplot2 works on certain 'aesthetics', which are typically variables that take on different values
+
+Let's add more.
+
+
+```{r gg2}
+ggplot(aes(x=Petal.Length, y=Sepal.Length), data=iris) +
+  geom_point(color='red', size=4, alpha=.5)  # not within aesthetic function
+```
+
+## ggplot2
+```{r}
+ggplot(aes(x=Petal.Length, y=Sepal.Length), data=iris) +
+  geom_point(aes(color=Species)) +
+  theme_minimal()
+```
+

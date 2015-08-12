@@ -69,5 +69,57 @@ library(lme4)
 lmer(Reaction ~ Days + (1|Subject), data=sleepstudy)  # a mixed model with a random intercept for Subject
 ```
 
+## Modeling
+
+
+Do a search for a model that you would like to learn more about.
+
+If it's a somewhat standard model try an R search
+
+```{r, eval=FALSE}
+??`generalized linear model`
+```
+
+For something you're less sure about you might try several approaches:
+
+- General web search of model name with R attached (best approach)
+
+- [RDocumentation.org](http://www.rdocumentation.org/) and search 'all fields' or 'description' with the model name.
+
+- RSiteSearch
+    - generally poor
+
+- You can also ask us to help narrow your search to maybe some popular implementations.
+
+
+## Modeling 
+
+Once you find a package that has something you want to try, take the following steps.
+
+- Install the package
+  - Note that many packages are now on github and might require different means for installation
+- ***Consult the manual***
+  - Cannot be stressed enough
+- In the manual find one or two primary functions
+- Read the helpfile, run the example code when finished (if available; you don't have to copy and paste)
+
+```{r, eval=FALSE}
+example('modelingFunctionName')
+```
+
+## Modeling
+Otherwise you will:
+
+- not know which functions might be most useful
+- get errors when you try to run it with your own data
+- miss out on neat features of the function
+- miss out on other related functions (e.g. visualization, diagnostics)
+
+Think of one or two models you're thinking about or simply maybe interested in and try this for yourself.
+
+We'll come around and help you try and implement them if you have trouble or answer other questions.
+
+
+
 
 
