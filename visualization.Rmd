@@ -94,9 +94,79 @@ Add the following lines after the geom, keep the theme at the end if you want.
   facet_wrap(~Species) +
 ```
 
+If you like, use facet_grid rather than wrap.
+
+
 ## Newer approaches
-ggplot2 was and still is an awesome tool and still very useful.
+ggplot2 was and still is an awesome tool and still very useful for standard static plots.
 
 - And has continued to develop even as the creator has moved on
 
 However, ggvis, its successor, enables interactivity and is more web-oriented.
+
+Furthermore there is a growing number of packages put out by Rstudio and others that embrace modern methods of visual display.
+
+
+## ggvis
+
+The following shows how to do one of the previous plots with ggvis.
+
+```{r ggvis, message=FALSE}
+library(ggvis)
+ggvis(x=~Petal.Length, y=~Sepal.Length, data=iris) %>% 
+  layer_points(fill=~Species, fillOpacity:=.75) 
+```
+
+It's already a clean looking plot, and ready to add interactive components.
+
+## ggvis
+
+As before, we'll build up from the above. 
+
+Try to add layer_smooths to the code, with an argument se=TRUE.
+
+```{r ggvis2, eval=FALSE}
+ggvis(x=~Petal.Length, y=~Sepal.Length, data=iris) %>% 
+  layer_points(fill=~Species, fillOpacity:=.75) 
+```
+
+```{r ggvis3, echo=F, eval=T}
+library(ggvis)
+ggvis(x=~Petal.Length, y=~Sepal.Length, data=iris) %>% 
+  layer_points(fill=~Species, fillOpacity:=.75) %>% 
+  group_by(Species) %>% 
+  layer_smooths(stroke=~Species, se=T)
+```
+
+## Going further
+
+Search htmlwidgest showcase 
+
+- http://www.htmlwidgets.org/showcase_leaflet.html
+- All of these are geared toward making interactive graphics as easy to procure as the normal ones.
+- We demonstrated leaflet before
+
+Shiny
+
+- http://shiny.rstudio.com/gallery/
+- We could have spent all of today on shiny.
+
+My own (with Josh's assistance) demo using these tools.
+
+- https://micl.shinyapps.io/texEx/texEx.Rmd
+
+## Things to think about with visualization
+
+Cleaner is almost always better
+
+Think multivariately (beyond bivariate)
+
+- e.g. there is never a good reason for bar plot
+
+Think interactively
+
+~10% of the population has some form of color blindness. 
+
+Avoid maps that just regurgitate population
+
+Color is not 'extra'

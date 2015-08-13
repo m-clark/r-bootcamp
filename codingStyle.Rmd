@@ -1,0 +1,12 @@
+---
+title: "Coding Style"
+author: "MC"
+output:   
+    ioslides_presentation:
+      highlight: zenburn
+      smaller: yes
+      theme: readable
+      widescreen: no
+      css: mainPresentation.css
+---
+

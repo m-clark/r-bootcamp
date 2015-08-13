@@ -28,3 +28,8 @@ output:
 ```{r, child='iterativeProgramming.Rmd'}
 ```
 
+```{r, child='modeling.Rmd'}
+```
+
+```{r, child='visualization.Rmd'}
+```
