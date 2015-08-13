@@ -120,6 +120,17 @@ Think of one or two models you're thinking about or simply maybe interested in a
 We'll come around and help you try and implement them if you have trouble or answer other questions.
 
 
+## Other
 
+Optimization problems
+
+  - Start with optim function
+  - Cran task view on optimization
+  
+Simulation
+
+  - practically every probability distribution under the sun is found in R
+  - Some packages to supplement base R: vgam, gamlss
+  - Cran task view on probability distributions
 
 

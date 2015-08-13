@@ -159,14 +159,18 @@ My own (with Josh's assistance) demo using these tools.
 
 Cleaner is almost always better
 
+- avoid things like unnecessary gridlines, backgrounds etc.
+
+
 Think multivariately (beyond bivariate)
 
-- e.g. there is never a good reason for bar plot
+- e.g. there is never a good reason for bar plot or similarly simple visuals that can be explained in a single sentence
 
 Think interactively
 
 ~10% of the population has some form of color blindness. 
 
-Avoid maps that just regurgitate population
+Color is required, not 'extra'
 
-Color is not 'extra'
+
+## Exercise

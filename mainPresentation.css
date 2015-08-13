@@ -4,7 +4,10 @@ h2 {font-family: sans-serif; color:#1E90FF; text-align: center} /*; background:#
 h3 {font-family: sans-serif; color:#3F5151; text-align: left}
 h4 {font-family: sans-serif; color:#3F5151; text-align: center}
 h5 {font-family: sans-serif; color:#3F5151; text-align: left}
-p {font-family: sans-serif; color:#0C1707;}
+
+p {
+  }  /*This is for main slide text #0C1707*/  
+
 ul li {
     line-height: 140%;
     list-style: outside none disc;
@@ -15,12 +18,13 @@ ul li {
 
 
 slides > slide.dark {
-    background: none repeat scroll 0 0 white  !important; /*Changes Transition Slide #82A3BF  #5F5647*/
+  color: blue;
+  background: none repeat scroll 0 0 white  !important; /*Changes Transition Slide #82A3BF  #5F5647*/ 
 }
 
 slides > slide {
     border-radius: 5px;
-    color: #797979;
+    color: #797979  ;  /**/
     display: none;
     background-color: white;
     font-family: "Open Sans",Arial,sans-serif;
@@ -44,6 +48,11 @@ mark.emp {
 
 .empCode {
   color:#550307;
+  background: none;
+}
+
+.empPack {
+  color:#1E90FF;
   background: none;
 }
 
@@ -96,24 +105,30 @@ pre { /* console output*/
     width: 100%;
 }
 
+
+
 .prettyprint  {
   font-size:10pt;
   background-color:#ffefd5;
 
 } /*Changes Font Color for Words in Code*/
 
+/*
 .prettyprint .pln {
 
 } /*Changes Font Color for (all) Words in Code*/
 
+/*
 .prettyprint .str, .prettyprint .atv {
     color: green;
 
 } /*Changes Font Color for Strings in Code*/
 
+/*
 .prettyprint .kwd, .prettyprint .tag {
-    color: #EE4000;  /*#9B110E*/
+  color: #EE4000;  /*#9B110E
 } /*Changes Font Color for Functions in Code... or not*/
+
 
 #bg img {
   position: absolute; 
@@ -128,14 +143,14 @@ pre { /* console output*/
 }
 
 .title-slide {
-    color: white;  /*#550307; #428bca*/
+    color: #550307;  /*#550307; #428bca*/
     background: white;
     /*line-height: 1.4;*/
     
 }
 
 .title-slide hgroup h1 {
-    color: white;  /*#550307; #428bca*/
+    color: #550307;  /*#550307; #428bca*/
     /*font-size: 65px;*/
     /*letter-spacing: -3px;*/
     /*line-height: 1.4;*/

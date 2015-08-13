@@ -1,11 +1,14 @@
 ---
 title: "Getting Started"
-output: 
-  ioslides_presentation:
-    highlight: zenburn
-    theme: united
-    
+output:   
+    ioslides_presentation:
+      highlight: zenburn
+      smaller: yes
+      theme: readable
+      widescreen: no
+      css: mainPresentation.css
 ---
+
 ## Outline
 - Installing R
 - Installing Rstudio
@@ -51,7 +54,7 @@ Cross-platform
  - Download
  - Install
  
-# Using Rstudio
+# <mark class="empTitle">Using Rstudio</mark>
 ## What is Rstudio?
 <mark class="emp">I</mark>ntegrated <mark class="emp">D</mark>evelopment <mark class="emp">E</mark>nvironment
 
@@ -77,20 +80,30 @@ But lots more...
 - Package development
 
 
-## Multiple File Types
+## Using other code, Reporting tools
 
+<div class="columns-2">
 - R scripts
 - R markdown
 - Latex 
 - Presentation
 - General text/code editor that recognizes several other languages
 
+<div style="text-align:center">
+<img src="images/reporting.png" width=100% >
+</div>
+
+</div>
+
 ## Web-enabled
 
 Not only can you easily publish your efforts to html, you can even code directly in html, css, javascript etc.
 
-The Rstudio group and others have a suite of packages devoted to interactive visualizations that often will require no more effort than standard plots
+The Rstudio group and others have a suite of packages devoted to interactive visualizations that often will require no more effort than standard plots.
 
+<div style="text-align:center">
+<img src="images/shiny.png" width=50% >
+</div>
 
 ## Projects
 
@@ -102,6 +115,10 @@ Easily switch from one project to another
 
 Version control
 
+<div style="text-align:center">
+<img src="images/openProject.png" width=50% >
+</div>
+
 
 ## Version Control
 
@@ -112,8 +129,12 @@ Any project is able to take advantage of version control
 
 Among the many benefits, version-control provides peace of mind for research reproducibility, enhances collaboration, and allows one to keep on top of all the changes a typical research endeavor undergoes.
 
+<div style="text-align:center">
+<img src="images/Git-Logo-1788C.png" width=50% >
+</div>
 
-# Adding Functionality
+
+# <mark class="empTitle">Adding Functionality</mark>
 
 ## Adding Functionality
 
@@ -135,7 +156,7 @@ Other
   - Github (also Rforge R-forge)
   - Bioconductor
 
-To install packages there are two primary approaches with Rstudio 
+To install packages there are two primary approaches within Rstudio:
 
   - install.packages function
   - Using the packages tab
@@ -146,4 +167,25 @@ R does not load packages in your library automatically. To do so, use the librar
 
   - library('packagename')
 
+To remove a package you've loaded from the global environment:
+
+  - detach(package:packagename)
+
 Common coding practice loads a package only at the point it's needed (rather than loading all at the beginning)
+
+## Using packages
+
+Let's go ahead and install and load a package
+
+Type the following at the R console, or use the GUI approach.
+
+```{r eval=FALSE}
+install.packages('dplyr')
+install.packages('ggvis')
+```
+
+Note how any dependencies are installed automatically.
+
+If you are prompted to choose a mirror, select 0-cloud.
+
+<mark class="empPack">dplyr</mark>  will take a bit because one of the dependencies is relatively large.

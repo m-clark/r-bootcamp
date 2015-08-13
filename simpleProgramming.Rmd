@@ -1,10 +1,12 @@
 ---
-title: "Simple programming"
-author: "MC"
+title: "Some Simple programming"
 output:   
     ioslides_presentation:
       highlight: zenburn
-      theme: cosmo
+      smaller: yes
+      theme: readable
+      widescreen: no
+      css: mainPresentation.css
 ---
 
 ## Outline
@@ -14,8 +16,18 @@ output:
   - Data Structures
   - Using functions
   
-  
-  
+# <mark class="empTitle">Interactive Interlude</mark>
+
+##
+Go to the following page:
+
+**www.nd.edu/~mclark19/learn/pynotebooklink.html**
+
+Do not save it as text or with some other extension if asked (e.g. select 'all files')
+
+Then go to jupyter.org
+
+
 ## Creating and manipulating objects
 
 In R, you will constantly create *objects* and manipulate objects with *functions*.
@@ -25,10 +37,10 @@ Objects can be anything, and this will become clear as we continue through the c
 We will use many functions over the course of the day, including building our own.
 
 
-
+# <mark class="empTitle">Data Structures</mark>
 ## Data Structures
 
-The most common data structures used can be seen to posses
+The most common data structures used can be seen to possess either one type or more than one.
 
 One type only
 
@@ -49,12 +61,12 @@ Multiple types
     - Dataframes
       - Perhaps most commonly used class of lists
       
-Dataframes are what you've been using if you have experience with other statistical packages or programming languages.
+Dataframes are essentially the same thing as what you've been using if you have experience with other statistical packages or programming languages.
 
 Typical use is that each column represents attributes, targets etc., while rows represent observations (e.g. people, time points)
 
 
-
+# <mark class="empTitle">Using Functions</mark>
 ## Using functions
 R is a functional language.
 
@@ -65,6 +77,7 @@ They are highly flexible, in that the nature of the input can range from nothing
 
 ## Using functions
 
+The basic syntax:
 
 ```{r funcDemo, eval=F}
 myfunction(x=someX, y=someY)
@@ -73,7 +86,7 @@ myfunction(x=someX, y=someY)
 
 ## Using functions
 
-Use the matrix function to create a matrix, use c to concatentate values, use : to create sequences, and finally provide arguments pertaining to the number of rows and columns.
+Use the matrix function to create a matrix, use c to concatenate values, use : to create sequences, and finally provide arguments pertaining to the number of rows and columns.
 
 ```{r createMatrix}
 myMatrix = matrix(c(1:3, 4:6, 7:9), nrow=3, ncol=3, byrow=T)
@@ -92,14 +105,7 @@ methods(summary)
 
 ## Getting Started with Statistical Functions
 
-Write and run the following lines, then use some of the following functions on those objects:
-
-- summary
-- mean
-- sd
-- table
-- plot
-- cbind
+Write the following into an Rstudio script and run.  You can inspect if you wish.
 
 ```{r}
 x = rnorm(100)
@@ -108,6 +114,15 @@ z = sample(letters[1:5], 100, replace=T)
 ```
 
 
-## Playtime
+Then use some of the following functions on those objects:
 
+- summary
+- mean
+- sd
+- table
+- plot
+- cbind (column bind two objects)
+- rbind (row bind)
+- data.frame
 
+Use the helpfile if you're not sure about the function.

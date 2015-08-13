@@ -3,10 +3,85 @@ title: "Coding Style"
 author: "MC"
 output:   
     ioslides_presentation:
-      highlight: zenburn
+      highlight: pygments
       smaller: yes
       theme: readable
       widescreen: no
       css: mainPresentation.css
 ---
 
+
+## Why is the following code problematic
+
+
+```{r, eval=FALSE}
+T<-matrix(rnorm(10000), 100, 100)
+data = matrix(NA,100,100)
+
+
+for(i in 1:100){
+for (j in 1:100){
+  data2[i,j] <-sum(T[,i]*T[,j])
+}
+}
+
+foo = function(c,t){
+if(c == t) {y = rbinom(1,1,.5)}
+else {y = rbinom(1,1,.6)}
+y  
+}
+```
+
+## Issues
+
+- Vague object names
+- Inappropriate object names
+- Inconsistent assignment
+- Unclear arguments
+- Unnecessary looping
+- Problematic spacing
+- No comments
+- Magic numbers
+
+
+## Comparison
+
+```{r, eval=FALSE}
+### The following generates the crossproduct of a matrix
+
+# sample size
+N = 100
+
+# simulate data from draws from a normal distribution
+set.seed(123)  # if desire reproducibility
+randNormMat = matrix(rnorm(N*N, ncol=N, nrow=N))
+
+crossprodMat = crossprod(randNormMat)
+
+### example function serving no purpose
+
+# takes two integer vectors, draws a random sample from both. If the two values
+# are equal draws from binomial size=1 with first probability, else uses the
+# second probability
+
+exampleFunction = function(integerVector1, integerVector2, prob1, prob2){
+  sampleInt1 = sample(integerVector1, 1)
+  sampleInt2 = sample(integerVector2, 1)
+  
+  if(sampleInt1 == sampleInt2) {
+    randomBinomDraw = rbinom(1, size=1, prob=prob1)
+    } else {
+      randomBinomDraw = rbinom(1, size=1, prob=prob2)
+      }
+  randomBinomDraw
+}
+```
+
+
+## Good coding practices
+- Consistent coding style, including spacing
+- Comment early and often
+  - Focus on why not what
+- Strive for clarity
+  - Assume you'll need the code again a year from when you are writing it- will you know what you've done?
+    

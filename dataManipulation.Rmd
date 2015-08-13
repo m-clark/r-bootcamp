@@ -1,6 +1,5 @@
 ---
 title: "Dealing with Data"
-author: "MC"
 output:   
     ioslides_presentation:
       highlight: zenburn
@@ -24,11 +23,11 @@ opts_knit$set(width=120, message=FALSE)
 - Using non-standard data objects
 
 
-# Indexing
+# <mark class="empTitle">Indexing</mark>
 ## Base R Indexing
 Base R has a very flexible/powerful indexing system with which to get at your data.
 
-Consider the following simple example, where we want values of x greater than 1
+Consider the following simple example, where we want values of x greater than 1 and less than zero.
 
 ```{r indexExample, echo=-1, cache=TRUE}
 set.seed(1234)
@@ -42,7 +41,8 @@ A more complicated approach. Values of y in which the absolute residuals of a re
 y[abs(resid(lm(y~x))) > 1]
 ```
 
-This is not the way you should be doing things, but serves as an example of the possibilities
+This is not the way you should be doing things necessarily, but serves as an example of the possibilities and flexibility.
+
 
 ## Base R Indexing
 
@@ -50,10 +50,10 @@ Indexing
 
 Lists (or dataframes)
 
-- ['name'] [number] to extract list elements (including data.frames)
+- ['name'] [number] to extract list elements (including dataframes)
     - myList['myelement']
     - [[ can select a single element, where [] can return multiple
-- \$name also
+- \$name also works and is often used.
     - myData$myvariable
     
 Matrices (or dataframes)
@@ -62,39 +62,39 @@ Matrices (or dataframes)
     - myData[1:3, 6:10]
     - myData[,'var1']
     
-see ?Extract
+see ?<mark class="empCode">Extract</mark>
 
 
 ## Base R Indexing
 
 For this exercise, you will work with one of the many datasets that come with a basic R installation (?datasets), but note that packages typically come with their own as well.
 
-For the following:
-Examine the **iris** dataset using the str (structure) function.  You do not have to do anything to get the iris data, it's an object in the base R environment.
 
-Create a separate object that just contains the the Species column of data
+- Examine the **iris** dataset using the <mark class="empCode">str</mark> (structure) function.  You do not have to do anything to get the iris data, it's an object in the base R environment.
 
-Create an object containing the 10-15th rows
+- Create a separate object that just contains the the Species column of data
 
-Note the Petal Width of the 100th observation via indexing
+- Create an object containing the 10-15th rows
 
-Bonus: subset the data to only the virginica species.  Hint- use ==
+- Note the Petal Width of the 100th observation via indexing
+
+- Bonus: subset the data to only the virginica species.  Hint- use == to create an index that is true only if equal to 'Virginica'.
 
 
-# Piping
+# <mark class="empTitle">Piping</mark>
 
 ## Piping
-Piping is an alternative way to successively perform data manipulation and indexing (mainly through magrittr package).
+Piping is an alternative way to successively perform data manipulation and indexing (mainly through <mark class="empPack">magrittr</mark> package).
 
-- The most common way to do so is with this symbol %>%
+- The most common way to do so is with this symbol <mark class="empCode">%>%</mark>
 - However, there are other ways to do so, and some with other packages
 
 
-In conjunction with dplyr, it can make data manipulation and wrangling straightforward and with very clear code.
+In conjunction with <mark class="empPack">dplyr</mark>, it can make data manipulation and wrangling straightforward and with very clear code.
 
 
 ## Piping
-Install the rvest package (read html functionality).
+The following uses <mark class="empPack">rvest</mark> package (read html functionality) and <mark class="empPack">stringr</mark> for st.
 
 ```{r lePipe, cache=TRUE}
 # ☻ ☻ ☻
@@ -107,8 +107,13 @@ html(link) %>%                                        # read a webpage
   rename(Ave = Ave.) %>%                              # rename
   filter(Year >= 2010) %>%                            # select certain rows
   mutate(AveNum = str_extract(Ave, '[0-9].[0-9]+'),   
-         AveNum2 = as.numeric(str_replace(Ave, ' %', '')))  # create new variables
+         AveNum2 = as.numeric(str_replace(Ave, ' %', '')))  # create new variables with some regex
 ```
+
+## Try it
+
+Try it yourself. Pipe iris to the function <mark class="empCode">summary</mark>.  The keyboard shortcut for the  %>% is Ctrl+Shift+m.
+
 
 ## Piping
 
@@ -119,7 +124,7 @@ myObjectSubset = mydata %>%
   filter(Year > 2000)
 ```
 
-Piping is especially useful for visualization, and ggvis and newer more web-directed visualization packages will typically work with standard pipe operators.
+Piping is especially useful for visualization, and <mark class="empPack">ggvis</mark> and newer more web-directed visualization packages will typically work with standard pipe operators.
 
 ```{r ggvisPipe, fig.align='center', fig.height=2.5, fig.width=4}
 library(ggvis)
@@ -130,21 +135,22 @@ iris %>%
 ```
 
 
-# Filtering
+
+# <mark class="empTitle">Filtering & Selecting</mark>
 
 ## Filtering
 Filtering (or Slicing) refers to subsetting by rows.
 
 You have already seen how to do this with base R functionality with numbered indexing
 
-the dplyr package has two primary functions for this
+the <mark class="empPack">dplyr</mark> package has two primary functions for this
 
- - filter 
- - slice 
+ - <mark class="empCode">filter</mark> 
+ - <mark class="empCode">slice</mark> 
  
-It also has other functions that can make the code clearer and easier to work wtih
+It also has other functions that can make the code clearer and easier to work with.
 
-```{r filterSlice, echo=-1, cache=FALSE}
+```{r filterSlice, echo=-1, cache=FALSE, message=FALSE}
 library(dplyr)
 state.x77 %>% 
   as.data.frame %>% 
@@ -152,17 +158,18 @@ state.x77 %>%
   slice(1:3)
 ```
 
-# Selecting
 
 ## Selecting
 
-Selecting here refers to the subset of columns, and with dplyr again you get enhanced functionality and clarity
+Selecting here refers to the subset of columns, and with <mark class="empPack">dplyr</mark> again you get enhanced functionality and clarity.
 
 ```{r select, cache=TRUE}
 iris %>% 
   select(starts_with('Petal')) %>% 
   slice(1:2)
 ```
+
+# <mark class="empTitle">Aggregating and Exploratory Analysis</mark>
 
 ## Aggregation
 Oftentimes we engage in such operations in order to obtain summary information about groups.
@@ -202,7 +209,10 @@ iris %>%
 ```
 
 
-# Using non-standard data
+
+# <mark class="empTitle">Using non-standard data</mark>
+
+## Using non-standard data
 Examples of non-standard data:
 
 - text
@@ -214,5 +224,5 @@ Most of the data manipulation of such objects will be to put into a more analyza
 
 You will likely have to use package specific functions (e.g. jsonlite)
 
-#  Playtime
-Link
+##  Playtime
+[www.nd.edu/~mclark19/learn/Rbootcamp/dataManipulationPlaytime.html](http://www.nd.edu/~mclark19/learn/Rbootcamp/dataManipulationPlaytime.html)

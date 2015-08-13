@@ -33,3 +33,7 @@ output:
 
 ```{r, child='visualization.Rmd'}
 ```
+
+
+```{r, child='codingStyle.Rmd'}
+```
