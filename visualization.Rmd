@@ -64,10 +64,9 @@ ggplot(aes(x=Petal.Length, y=Sepal.Length), data=iris) +
 
 ## ggplot2
 
-ggplot2 works on certain 'aesthetics', which are typically variables that take on different values
+ggplot2 works on certain 'aesthetics', which are typically variables that take on different values, with 'geoms', things like points, lines, densities etc.
 
 Let's add more.
-
 
 ```{r gg2}
 ggplot(aes(x=Petal.Length, y=Sepal.Length), data=iris) +
@@ -75,9 +74,29 @@ ggplot(aes(x=Petal.Length, y=Sepal.Length), data=iris) +
 ```
 
 ## ggplot2
-```{r}
+```{r gg3}
 ggplot(aes(x=Petal.Length, y=Sepal.Length), data=iris) +
   geom_point(aes(color=Species)) +
   theme_minimal()
 ```
 
+## You try
+Install ggplot2 if you haven't.
+
+Change the aesthetics in the first line to look at Widths instead of Lengths.
+
+Delete the interior portion of geom\_point (i.e. it should look like geom\_point()).
+
+Add the following lines after the geom, keep the theme at the end if you want.
+
+```{r gg4, eval=FALSE}
+  geom_smooth() +
+  facet_wrap(~Species) +
+```
+
+## Newer approaches
+ggplot2 was and still is an awesome tool and still very useful.
+
+- And has continued to develop even as the creator has moved on
+
+However, ggvis, its successor, enables interactivity and is more web-oriented.
