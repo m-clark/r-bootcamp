@@ -1,6 +1,5 @@
 ---
 title: "Visualization"
-author: "MC"
 output:   
     ioslides_presentation:
       highlight: zenburn
@@ -11,51 +10,48 @@ output:
 ---
 
 ## Outline
-- Traditional Static Plotting
-  - Base R plotting
-  - ggplot2
+- Traditional Static Plots
+    - Base R plotting
+    - ggplot2
   
 - Newer approaches
-  - shiny, ggvis, htmlwidgets
+    - shiny, ggvis, htmlwidgets
 
-# Traditional Static Plotting
+# <mark class="empTitle">Traditional Static Plots</mark>
 ## Traditional Static Plotting
 
-Never forget that Base R has a lot of visualization capabilities that can produce high quality graphs
+Never forget that Base R has a lot of visualization capabilities that can produce high quality graphs.
 
-For many quick peeks, it's still often to be preferred.
+For many quick peeks, it's still often useful.
 
-<div class='columns-2'>
-```{r histogram, fig.align='left', fig.width=3, fig.height=3, results='hold'}
+```{r histogram, echo=1:2, fig.align='center', fig.width=6, fig.height=3.75, cache=TRUE}
 x = rnorm(100)
 y = 2*x^2 + rnorm(100)
+
+par(mfrow=c(1,2))
 hist(x)
-```
-
-<br>
-
-```{r basicPlot, fig.align='right', fig.width=3, fig.height=3}
 plot(x, y)
+layout(1)
 ```
-</div>
+
 
 
 ## Traditional Static Plotting
-Unfortunately base R plots can take a lot to get to that professional quality, as the defaults are generally poor (my opinion)
+Unfortunately base R plots are not too impressive looking, as the defaults are generally poor (my opinion).
 
-Many packages or other base R functions serve a particular purpose
+Many packages or other base R functions serve a particular purpose.
 
-  - heatmaps, dendrograms, diagnostics correlation plots etc.
+  - heatmaps, dendrograms, diagnostics, correlation plots etc.
 
-In addition, a widely used static plotting package is ggplot2
+In addition, a widely used static plotting package is <mark class="empPack">ggplot2</mark>
 
 ## ggplot2
 
-ggplot2 is based on the 'Grammar of Graphics' and takes on a layered approach to building visualizations, using a technique similar to the piping we showed earlier.
+<mark class="empPack">ggplot2</mark> is based on the 'Grammar of Graphics' and takes on a layered approach to building visualizations, using a technique similar to the piping we showed earlier.
 
 It primarily works on dataframes.
 
-```{r ggplot2}
+```{r ggplot2, fig.width=3.5, fig.height=3.5, fig.align='center', cache=TRUE}
 library(ggplot2)
 
 ggplot(aes(x=Petal.Length, y=Sepal.Length), data=iris) +
@@ -64,24 +60,24 @@ ggplot(aes(x=Petal.Length, y=Sepal.Length), data=iris) +
 
 ## ggplot2
 
-ggplot2 works on certain 'aesthetics', which are typically variables that take on different values, with 'geoms', things like points, lines, densities etc.
+<mark class="empPack">ggplot2</mark> works on certain 'aesthetics', which are typically variables that take on different values, with 'geoms', things like points, lines, densities etc.
 
 Let's add more.
 
-```{r gg2}
+```{r gg2, fig.width=3.5, fig.height=3.5, fig.align='center', cache=TRUE}
 ggplot(aes(x=Petal.Length, y=Sepal.Length), data=iris) +
   geom_point(color='red', size=4, alpha=.5)  # not within aesthetic function
 ```
 
 ## ggplot2
-```{r gg3}
+```{r gg3, fig.width=6, fig.height=4, fig.align='center', cache=TRUE}
 ggplot(aes(x=Petal.Length, y=Sepal.Length), data=iris) +
   geom_point(aes(color=Species)) +
   theme_minimal()
 ```
 
 ## You try
-Install ggplot2 if you haven't.
+Install <mark class="empPack">ggplot2</mark> if you haven't.
 
 Change the aesthetics in the first line to look at Widths instead of Lengths.
 
@@ -98,18 +94,18 @@ If you like, use facet_grid rather than wrap.
 
 
 ## Newer approaches
-ggplot2 was and still is an awesome tool and still very useful for standard static plots.
+<mark class="empPack">ggplot2</mark> was and still is an awesome tool and still very useful for standard static plots.
 
 - And has continued to develop even as the creator has moved on
 
-However, ggvis, its successor, enables interactivity and is more web-oriented.
+However, <mark class="empPack">ggvis</mark>, its successor, enables interactivity and is more web-oriented.
 
 Furthermore there is a growing number of packages put out by Rstudio and others that embrace modern methods of visual display.
 
 
 ## ggvis
 
-The following shows how to do one of the previous plots with ggvis.
+The following shows how to do one of the previous plots with <mark class="empPack">ggvis</mark>.  Go ahead and put it into your script.
 
 ```{r ggvis, message=FALSE}
 library(ggvis)
@@ -140,7 +136,7 @@ ggvis(x=~Petal.Length, y=~Sepal.Length, data=iris) %>%
 
 ## Going further
 
-Search htmlwidgest showcase 
+Search htmlwidgets showcase 
 
 - http://www.htmlwidgets.org/showcase_leaflet.html
 - All of these are geared toward making interactive graphics as easy to procure as the normal ones.
@@ -159,18 +155,59 @@ My own (with Josh's assistance) demo using these tools.
 
 Cleaner is almost always better
 
-- avoid things like unnecessary gridlines, backgrounds etc.
+- avoid things like unnecessary grid lines, backgrounds etc.
 
 
-Think multivariately (beyond bivariate)
+Go beyond bivariate
 
-- e.g. there is never a good reason for bar plot or similarly simple visuals that can be explained in a single sentence
+- There is practically never a good reason for bar plot or similarly simple visuals that can be explained in a single sentence.
+- God help you if you come to our office wanting a pie chart.
 
 Think interactively
 
-~10% of the population has some form of color blindness. 
-
 Color is required, not 'extra'
+
+- But ~10% of the population has some form of color blindness. 
 
 
 ## Exercise
+
+We'll use the state.x77 data set
+
+Your first step will be to convert it from a matrix to a dataframe, using the dataframe argument on the object.
+
+The x and y axes will be Income and Life Expectancy.
+
+Choose two other variables for two of color, size, or transparency.
+  - transparency takes on values from 0 (invisible) to 1.
+
+## Exercise
+Using ggplot2, the basic approach is:
+
+```{r ggplot2Exercise, eval=FALSE}
+ggplot2(aes(?), data=?) +
+  geom_?()
+```
+
+Remember that things that can change value go in the aesthetic part.
+
+The key arguments are x, y, size, color, and alpha. 
+
+
+Using ggvis, the basic approach is:
+
+```{r ggvisExercise, eval=FALSE, echo=1:3}
+data %>%
+  ggvis(x=~?, y=~?) %>% 
+  layer_?(?)
+
+data.frame(state.x77) %>%
+  ggvis(x=~Income, y=~Life.Exp) %>% 
+  layer_points(fill=~Illiteracy, size=~HS.Grad)
+```
+
+Things that can change value are noted with =~ 
+
+Other values of interest :=
+
+The key arguments are x, y, size, fill, and fillOpacity. 

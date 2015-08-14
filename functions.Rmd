@@ -1,6 +1,5 @@
 ---
 title: "Functions"
-author: "MC"
 output:   
     ioslides_presentation:
       highlight: zenburn
@@ -16,14 +15,14 @@ Functions
 - Review of using
 - Writing your own
 
-# Using functions
+# <mark class="empTitle">Using functions</mark>
 ## Using functions
 
 Functions are extremely important in the R world.
 
 - they are themselves objects and can be used as such
 
-The key thing to remember is that functions (almost always) take specific inputs and always return a value
+The key thing to remember is that functions (almost always) take specific inputs and always return a value.
 
 Every R helpfile states explicitly the syntax required to use a function
 
@@ -40,16 +39,17 @@ Note that not all arguments are required, and some will have default values.
 
 It is important to know the arguments of any function you use, or you might be missing out on quite a bit, or not understand why you're getting an error.
 
-As an example, examine the arguments for the mean function (i.e. type ?mean for the help file)
+As an example, examine the arguments for the <mark class="empTitle">mean</mark> function (i.e. type ?mean for the help file)
 
-<img src='images/meanHelpfile.png' width=500>
-
+<div style="text-align:center">
+<img src='images/meanHelpfile.png' width=500 >
+</div>
 
 ## Body
 
 The body of a function is where all the code that works on those arguments
 
-Type median.default at your console to see the body of median, which is fairly simple as far as functions go.
+Type <mark class="empCode">median.default</mark> at your console to see the body of median, which is fairly simple as far as many functions go.
 
 ```{r median, cache=TRUE}
 median.default
@@ -68,9 +68,9 @@ A good way to start learning decent coding style is by looking at code from base
 
 The environment is the frame or map of the location of the function's variables.
 
-Its purpose is primarily to bind names to a set of values
+Its purpose is primarily to bind names to a set of values.
 
-What do you think the last line will produce?
+What do you think these two functions will produce? Make your guess then see for yourself.
 
 ```{r enviro, eval=FALSE}
 b = 3
@@ -81,10 +81,11 @@ f = function(b){
 
 f(2)
 
-f = function(){
+f = function(a){
   return(b)
 }
-f()
+
+f(2)
 ```
 
 ## Environment
@@ -98,19 +99,20 @@ f = function(){
   print(environment())
   # return(b)
 }
+
 f(); environment()
 ```
 
 This will be more important when writing your own functions, and more so if you create your own package.
 
-However, it's important to at least be aware of environments to better understand how functions are working when you use them.
+However, it's good to at least be aware of environments to better understand how functions are working when you use them.
 
 
-# Writing your own functions
+# <mark class="empTitle">Writing your own functions</mark>
 ## Writing your own functions
 Once you get the hang of R, you'll want to write your own functions to further make your data wrangling and exploration efficient.  
 
-Furthermore, functions aid reproducibility.
+Furthermore, functions aid reproducibility and automaticity.
 
 A simple rule is, if you've written the same line of code more than twice, you should probably write a function the does the operation you're attempting.
 
@@ -172,7 +174,7 @@ At that point we will also see some <mark class='emp'>*anonymous functions*</mar
 There are also functions that return functions.
 
 
-## Create a function
+## Playtime: Create Your Own Function
 
 Write a function that does the following:
 
@@ -186,11 +188,13 @@ Use a snippet to get started (type fun and hit tab).
 ## Debugging
 Rstudio's debugger makes also makes testing very easy.
 
-As an example, one can use a function like debugonce to start the debugging process.
+As an example, one can use a function like <mark class='empCode'>debugonce</mark> to start the debugging process.
 
 ```{r, eval=FALSE}
 debugonce(myfunc)
 myfunc(arg)
 ```
 
-Try it with the function you just created.
+Try it with the function you just created. Hit return (at the console) to cycle through your function step by step.
+
+

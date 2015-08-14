@@ -1,6 +1,5 @@
 ---
-title: "Modeling Basics"
-author: "MC"
+title: "Statistical Modeling Basics"
 output:   
     ioslides_presentation:
       highlight: zenburn
@@ -15,20 +14,23 @@ output:
 
 After all that we've gone through at this point, modeling will be the easy part for you.  
 
-The biggest hurdle in modeling is preparing the data, and the better you are at programming:
+The biggest hurdle in statistical enterprise is almost always obtaining and preparing the data.
 
-- the faster it will go
+The better you are at programming:
+
+- the faster you will do things
 - the more you can explore
-- the more you can spend time learning other things (like new modeling packages)
+- the more you can spend time learning other things (like new modeling techniques/packages)
 
-Once complete, you now have thousands of packages to choose from for modeling.
+With R, you now have thousands of packages to choose from for modeling.
 
 
 ## Modeling
 
 The standard format for regression modeling can serve as baseline code for modeling in other packages.
 
-Most take a formula and data argument. 
+Most take a formula and data argument. Formula is actually a class of object.
+
 - a regression of y on x and z
 
 ```{r lmExample, eval=FALSE}
@@ -42,7 +44,7 @@ lm.fit(X, y)          # lm.fit is the workhorse of lm
 ```
 
 
-Unsupervised methods usually will need a matrix argument 
+Unsupervised methods usually will need a matrix argument.
 
 - sometimes a dataframe is ok
 
@@ -50,18 +52,19 @@ Unsupervised methods usually will need a matrix argument
 princomp(X)
 ```
 
-
 ## Modeling
 
-And then there are variations on these themes, but those constitute the vast majority of standard and complex models.  
+There are variations on those basic themes (below)
 
-In addition, they all come with additional arguments that you'll need to familiarize yourself with before using the function
+However the previous examples constitute the vast majority of standard and complex models.  
+
+In addition, they all come with additional arguments that you'll need to familiarize yourself with before using the function.
 
 ```{r lmAlt, eval=FALSE}
-glm(art ~ ., data=bioChemists, family = 'poisson')   # number of articles predicted by everything else
+glm(art ~ ., data=bioChemists, family = 'poisson')    # number of articles predicted by everything else
 
 library(pscl)
-hurdle(art ~ ., data=bioChemists, dist = 'poisson')  # hurdle model to deal with excess zeros
+hurdle(art ~ ., data=bioChemists, dist = 'poisson', zero.dist = "binomial")   # to deal with excess zeros
 ```
 
 ```{r lmerExample, eval=FALSE}
@@ -69,8 +72,49 @@ library(lme4)
 lmer(Reaction ~ Days + (1|Subject), data=sleepstudy)  # a mixed model with a random intercept for Subject
 ```
 
-## Modeling
+```{r additiveModel, eval=FALSE, echo=-1}
+library(MASS)
+library(mgcv)
+gam(accel ~ s(times), data=mcycle)                    # generalized additive model
+```
 
+
+## Modeling Results
+
+The following is a very typical way you would go about things with data ready.
+
+1. Create a model object.
+2. Use a <mark class="empCode">summary</mark> or similar print function to see the results.
+3. Use other package/function specific functionality on the model object.
+4. Extract parts of the model object for your own exploration.
+
+## Model Example
+
+Standard regression.
+
+```{r regDemo, cache=TRUE, echo=-c(1:3)}
+x1 = rnorm(100)
+x2 = rnorm(100)
+y = x1 + .5*x2 + rnorm(100)
+
+
+myModel = lm(y ~ x1 + x2)
+summary(myModel)
+```
+
+## Model Example
+
+Plot of a generalized additive model object.
+
+```{r gamDemo, cache=TRUE, echo=-c(1), message=FALSE}
+library(mgcv); library(MASS)
+myModel = gam(accel ~ s(times), data=mcycle) 
+plot(myModel)
+```
+
+
+
+## Modeling
 
 Do a search for a model that you would like to learn more about.
 
@@ -84,10 +128,12 @@ For something you're less sure about you might try several approaches:
 
 - General web search of model name with R attached (best approach)
 
+- Use Rseek (a more sophisticated search/results)
+
 - [RDocumentation.org](http://www.rdocumentation.org/) and search 'all fields' or 'description' with the model name.
 
-- RSiteSearch
-    - generally poor
+- <mark class='empCode'>RSiteSearch</mark> function
+    - generally poor results in my experience
 
 - You can also ask us to help narrow your search to maybe some popular implementations.
 
@@ -97,9 +143,9 @@ For something you're less sure about you might try several approaches:
 Once you find a package that has something you want to try, take the following steps.
 
 - Install the package
-  - Note that many packages are now on github and might require different means for installation
+  - Note that many packages are now on Github and might require different means for installation
 - ***Consult the manual***
-  - Cannot be stressed enough
+    - Cannot be stressed enough
 - In the manual find one or two primary functions
 - Read the helpfile, run the example code when finished (if available; you don't have to copy and paste)
 
@@ -115,22 +161,23 @@ Otherwise you will:
 - miss out on neat features of the function
 - miss out on other related functions (e.g. visualization, diagnostics)
 
-Think of one or two models you're thinking about or simply maybe interested in and try this for yourself.
+Think of one or two models you're interested in and try this for yourself.
 
-We'll come around and help you try and implement them if you have trouble or answer other questions.
+We'll come around and help you try and implement their examples if you have trouble or answer other questions.
 
 
 ## Other
 
 Optimization problems
 
-  - Start with optim function
+  - Start with <mark class='empCode'>optim</mark> function 
+      - Just know there are other versions of it that provide nicer output and other features.
   - Cran task view on optimization
   
 Simulation
 
   - practically every probability distribution under the sun is found in R
-  - Some packages to supplement base R: vgam, gamlss
+  - Some example packages to supplement base R: vgam, gamlss
   - Cran task view on probability distributions
 
 

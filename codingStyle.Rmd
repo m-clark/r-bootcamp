@@ -1,6 +1,5 @@
 ---
 title: "Coding Style"
-author: "MC"
 output:   
     ioslides_presentation:
       highlight: pygments
@@ -11,7 +10,7 @@ output:
 ---
 
 
-## Why is the following code problematic
+## Why is the following code problematic?
 
 
 ```{r, eval=FALSE}
@@ -79,9 +78,11 @@ exampleFunction = function(integerVector1, integerVector2, prob1, prob2){
 
 
 ## Good coding practices
-- Consistent coding style, including spacing
+- Consistent coding style, including spacing, assignment etc.
+
 - Comment early and often
-  - Focus on why not what
+    - Focus on why not what
+
 - Strive for clarity
-  - Assume you'll need the code again a year from when you are writing it- will you know what you've done?
+    - Assume you'll need the code again a year from when you are writing it- will you know what you've done?
     
