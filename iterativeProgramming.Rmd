@@ -1,6 +1,5 @@
 ---
 title: "Control Flow"
-author: "MC"
 output:   
     ioslides_presentation:
       highlight: zenburn
@@ -20,7 +19,7 @@ output:
 
 
 
-# Iterative Programming
+# <mark class="empTitle">Iterative Programming</mark>
 ## Standard looping
 Data manipulation involves a lot of repeated operations, and R shines in this area in that it makes a lot of this easier.
 
@@ -45,11 +44,14 @@ for (i in 1:ncol(d)){
 One may loop:
 
 - directly over elements (less optimal)
-- over the numeric indices (as the in that demo, possibly the most common in the R community)
+    - for(token in words)
+- over the numeric indices (as in the previous demo, probably the most common in the R community)
+    - for(n in 1:N)
 - over the names
+    - for(n in names(d))
 
 ## Standard looping
-A more general way to loop is with a <mark class='empCode'>while</mark> in place of a for.
+A more general way to loop is with a <mark class='empCode'>while</mark> in place of a <mark class='empCode'>for</mark>.
 
 The loop will run until some condition is met.
 
@@ -76,7 +78,7 @@ if(conditionMet){
 }
 ```
 
-For more on for, while, and if...else constructs see ?Control.
+For more on Control Flow constructs see ?Control.
 
 
 ## Looping Alternatives: Vectorized Code
@@ -106,12 +108,12 @@ a + b
 
 ## Looping Alternatives: Vectorized Code
 
-There are many vectorized functions that come with base R, or are otherwise optimized such that you'll want to quickly learn them and avoid using explicit loops.
+There are many vectorized functions that come with base R, or are otherwise optimized such that you'll want to quickly learn them and avoid using explicit loops for common tasks.
 
-  - rowSums, colSums
-  - rowMeans, colMeans
-  - matrix operations (e.g. crossprod)
-  - scale
+  - <mark class='empCode'>rowSums</mark>, <mark class='empCode'>colSums</mark>
+  - <mark class='empCode'>rowMeans</mark>, <mark class='empCode'>colMeans</mark>
+  - matrix operations (e.g. <mark class='empCode'>crossprod</mark>)
+  - <mark class='empCode'>scale</mark>
 
 ## Looping Alternatives: Vectorized Code
 The vectorized approach works in a lot of other places also, and is especially useful in indexing.
@@ -130,9 +132,9 @@ rowSums(d > 0)                      # count values greater than zero for each ro
 
 
 ## Looping Alternatives: Functionals
-The quicker you learn the <mark class='empCode'>apply</mark> family of functions, as well as related versions in the aforementioned plyr package, the quicker your data processing will be.
+The quicker you learn the <mark class='empCode'>apply</mark> family of functions, as well as related versions in the aforementioned <mark class='empPack'>plyr</mark> package, the quicker your data processing will be.
 
-Apply the <mark class='empCode'>mean</mark> function to the columns.  Similar time as a loop in this case but cleaner code. 
+Apply the <mark class='empCode'>mean</mark> function to the columns.  Similar time as a loop in this case, but cleaner code. 
 
 ```{r apply, cache=T}
 dmeans = apply(d, 2, mean) # the 2 specifies columns
@@ -155,15 +157,16 @@ apply(d, 1, function(x) any(x>5))
 The apply is a family of functions:
 
 - <mark class='empCode'>lapply</mark> (will return list)
-- <mark class='empCode'>sapply</mark> and vapply for vectors and lists (can return list or vector/matrix)
+- <mark class='empCode'>sapply</mark> and <mark class='empCode'>vapply</mark> for vectors and lists (can return list or vector/matrix)
 - <mark class='empCode'>tapply</mark> for groupwise applications
 - <mark class='empCode'>mapply</mark> for multi-argument passing (for example to do something with 2 lists of input)
 - <mark class='empCode'>replicate</mark> to do something N times
 
-They also have parallelized versions, which means even if they weren't any faster than the standad loop they could be greatly sped up beyond the base speed.
+They also have parallelized versions, which means even if they weren't any faster than the standard loop they could be greatly sped up beyond the base speed.
+
 
 ## Looping Alternatives: Functionals
-plyr, dplyr, and tidyr packages have functions with similar capabilities but:
+<mark class='empPack'>plyr</mark>, <mark class='empPack'>dplyr</mark>, and <mark class='empPack'>tidyr</mark> packages have functions with similar capabilities but:
 
   - are often faster
   - allow for easier management of input to output
@@ -175,31 +178,63 @@ aaply(d, 1, mean)                  # array to array
 adply(d, 1, mean,  .parallel = T)  # array to dataframe in parallel
 ```
 
+# <mark class="empTitle">Working in Parallel</mark>
+## Working in Parallel
+
+R does not by default (yet) have its core functions work in parallel.
+
+However, there is much functionality to do so.
+
+Some package functions even come with an argument that can make it automatic.
+
+If the operations done in a loop are independent, doing them in parallel can greatly speed things up.
 
 
-# Your turn
+## Working in Parallel
+
+Basic approach:
+
+- Use the parallel package
+- Set up the cluster
+- Export any objects to be used to the cluster
+- Load libraries
+- Run
+
+
+```{r eval=FALSE}
+library(parallel)
+cl = makeCluster(6)
+clusterExport(cl, c('object1name', 'object2name'))
+clusterEvalQ(cl, library('myPack'))
+
+output = parApply(cl, 'object1', margin, someFunction)
+
+```
+
+
+# <mark class="empTitle">Your turn</mark>
 ## Your turn
 
-Using either of the two matrices below (or create one yourself), perform a row or column operation with two different approaches- one using an explicit loop, one of which uses apply-like functionality.
+Create the following two matrix objects.
+
+```{r eval=FALSE}
+nums = matrix(sample(1:3, 9, replace = T), 3, 3)
+lets = matrix(sample(letters, 9, replace = T), 3, 3)
+```
+
+## Your turn
+
+Using either of the two matrices (or create one yourself), perform a row or column operation with two different approaches- one using an explicit loop, one of which uses apply-like or vectorized functionality.
 
 Examples: if any in a row equal some value, any columns with values greater than some other value.
 
 Suggestions: 
 
   - Calculations like <mark class='empCode'>rowMeans</mark>, <mark class='empCode'>colSums</mark>
-  - & | ! (and and or operator, ?Logic)
+  - & | ! ('and' and 'or' operator, ?Logic)
   - Logical Operators <mark class='empCode'>== != > < <= >= </mark> (?Logic ?Comparison for more info)
   - <mark class='empCode'>any</mark> <mark class='empCode'>which</mark> <mark class='empCode'>all</mark>
   
 Hint: first decide on your problem, keep as simple as need be. Then write pseudo-code for the anonymous function part if using one.  Then try to convert to a working example.
 
 If you want to try something that isn't clear from the above suggestions just ask.
-
-Example:
-
-
-```{r}
-nums = matrix(sample(1:3, 9, replace = T), 3, 3)
-lets = matrix(sample(letters, 9, replace = T), 3, 3)
-```
-
